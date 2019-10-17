@@ -1,0 +1,8 @@
+; used with the vspheretools scripts - --dc example would use the below section
+; there can be as many [DC-<TEXT>] as you desire.  Note that all <TEXT> should be all uppercase
+
+
+[DC-EXAMPLE]
+SERVER=vc1.example.com
+USERNAME=gerbil@example.com
+
