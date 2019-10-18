@@ -8,14 +8,14 @@ Python3 and pyvmomi.
 
 ## ini file
 
-Standard ini file with sections \[DC-\<STRING>] which help by setting the username and servername.  Defaults to "vsphere-tools.ini" in the directory with the scripts
+Standard ini file with sections \[DC-\<STRING>] which help by setting the username and server name.  Defaults to "vsphere-tools.ini" in the directory with the scripts
 
     [DC-MYDC]
     SERVER=vc1.example.com
     USERNAME=myuser@vsphere.local
 
 
-In the above example, you'd specify "MYDC" to the --dc parameter, and the server and username would be used.  as many DC sections as you like can be specified, in case there are mupltiple VC/User settings you need/desire.
+In the above example, you'd specify "MYDC" to the --dc parameter, and the server and username would be used.  as many DC sections as you like can be specified, in case there are multiple VC/User settings you need/desire.
 
 ## Scripts
 
@@ -45,7 +45,7 @@ Where:
   - list - list the current snapshots of all VMs listed - snapname is not required
   - create - create a snapshot named with the provided snapname on each of the VMs in question - quiesces the system if possible.
   - delete - delete the snapshot named with the provided snapname on each of the VMs named - if any don't have that snapshot, an exception will be raised, and things will stop.
-  - revert - revert the VMs listed to the snapname snapthot.
+  - revert - revert the VMs listed to the snapname snapshot.
 
 ### canarytest.py
 
@@ -60,5 +60,5 @@ Then repeats the above for every host in the host list, throwing an exception an
     canarytest.py --dc <DC> -v <CANARYVM FQDN> <HOST LIST>
 
 - DC - the DC-\<DC> section of the ini file to use for username/server setup
-- CANARYVM - the name/FQDN of the canarytest VM
+- CANARYVM - the name/FQDN of the canary test VM
 - HOST LIST - a space delimited list of the hosts to move the canary VM between.  
