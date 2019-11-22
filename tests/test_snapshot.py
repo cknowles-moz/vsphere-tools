@@ -8,6 +8,8 @@
 # pylint: disable=no-self-use
 
 import sys
+import os
+from pathlib import Path
 import unittest
 from unittest import mock
 from pyVmomi import vim  # pylint: disable=no-name-in-module
@@ -53,7 +55,8 @@ class SnapshotScriptTestCase(unittest.TestCase):
         test_args = ["prog", "create", "testvm1"]
         with mock.patch.object(sys, 'argv', test_args):
             result = get_args()
-            self.assertEqual(result.configfile, 'vsphere-tools.ini',
+            self.assertEqual(result.configfile, str(Path.home()) +
+                             os.path.sep + 'vsphere-tools.ini',
                              "Default configfile not set correctly")
             self.assertEqual(result.dc, 'NONE', "DC is not None")
             self.assertEqual(result.operation, 'create',

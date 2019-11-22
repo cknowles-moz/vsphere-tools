@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/local/bin/python3
 """
 Canary-test
 
@@ -13,6 +13,8 @@ import ssl
 import argparse
 import getpass
 import configparser
+import os
+from pathlib import Path
 from pyVim import connect
 from pyVim.connect import Disconnect
 from pyVmomi import vim  # pylint: disable=no-name-in-module
@@ -46,7 +48,8 @@ def get_args():
                         help='boolean for wait for keypress between moves',
                         action='store_true', dest='waitbetween', default=False)
     parser.add_argument('-f', help='The config file to use', action='store',
-                        dest='configfile', default='vsphere-tools.ini')
+                        dest='configfile', default=str(Path.home()) +
+                        os.path.sep + 'vsphere-tools.ini')
     parser.add_argument('--dc', help="DC to use for ini file parsing",
                         dest="dc", default='NONE')
     parser.add_argument('hosts',

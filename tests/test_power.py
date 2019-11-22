@@ -9,6 +9,8 @@
 import unittest
 from unittest import mock
 import sys
+import os
+from pathlib import Path
 from pyVmomi import vim  # pylint: disable=no-name-in-module
 from scripts.power import *  # pylint: disable=unused-wildcard-import
 
@@ -49,7 +51,8 @@ class PowerScriptTestCase(unittest.TestCase):
         test_args = ["prog", "query", "vmname"]
         with mock.patch.object(sys, 'argv', test_args):
             result = get_args()
-            self.assertEqual(result.configfile, 'vsphere-tools.ini',
+            self.assertEqual(result.configfile, str(Path.home()) +
+                             os.path.sep + 'vsphere-tools.ini',
                              "Default Config file not set correctly")
             self.assertEqual(result.dc, 'NONE', "Default DC not None")
             self.assertEqual(result.operation, 'query',

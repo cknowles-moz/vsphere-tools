@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/local/bin/python3
 """
 snapshots.py
 
@@ -10,6 +10,8 @@ import argparse
 import getpass
 import atexit
 import configparser
+import os
+from pathlib import Path
 from pyVim import connect
 from pyVim.connect import Disconnect
 from pyVmomi import vim  # pylint: disable=no-name-in-module
@@ -39,7 +41,8 @@ def get_args():
                              the name of the snapshot',
                         action='store', dest='snapname')
     parser.add_argument('-f', help='The config file to use', action='store',
-                        dest='configfile', default='vsphere-tools.ini')
+                        dest='configfile', default=str(Path.home()) +
+                        os.path.sep + 'vsphere-tools.ini')
     parser.add_argument('-s', help='The VC to connect to', action='store',
                         dest='vc', default="NONE")
     parser.add_argument('-o', help='the port to connect to', action='store',

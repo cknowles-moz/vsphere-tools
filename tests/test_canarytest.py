@@ -8,6 +8,8 @@
 
 import sys
 import unittest
+import os
+from pathlib import Path
 from unittest import mock
 from pyVmomi import vim  # pylint: disable=no-name-in-module
 from scripts import canarytest
@@ -53,7 +55,8 @@ class CanaryTestCase(unittest.TestCase):
         test_args = ["prog", "host1"]
         with mock.patch.object(sys, 'argv', test_args):
             result = get_args()
-            self.assertEqual(result.configfile, 'vsphere-tools.ini',
+            self.assertEqual(result.configfile, str(Path.home()) +
+                             os.path.sep + 'vsphere-tools.ini',
                              "Default config file not set correctly")
             self.assertEqual(result.dc, 'NONE', "Default DC not set correctly")
             self.assertEqual(result.hosts, ['host1'],
