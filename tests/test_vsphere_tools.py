@@ -10,7 +10,7 @@
 import unittest
 from unittest import mock
 from pyVmomi import vim  # pylint: disable=no-name-in-module
-from vsphere_tools import *  # pylint: disable=unused-wildcard-import
+from scripts.vsphere_tools import *  # pylint: disable=unused-wildcard-import
 
 
 class PowerTestCase(unittest.TestCase):
@@ -19,7 +19,7 @@ class PowerTestCase(unittest.TestCase):
     """
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_poweroff_force(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on forced poweroff
@@ -31,7 +31,7 @@ class PowerTestCase(unittest.TestCase):
         testvm.ShutdownGuest.assert_not_called()
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_poweroff_graceful(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on graceful poweroff
@@ -43,7 +43,7 @@ class PowerTestCase(unittest.TestCase):
         testvm.ShutdownGuest.assert_called_once()
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_poweron(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on poweron
@@ -54,7 +54,7 @@ class PowerTestCase(unittest.TestCase):
         testvm.PowerOnVM_Task.assert_called_once()
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_reboot_force(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on forced reboot
@@ -66,7 +66,7 @@ class PowerTestCase(unittest.TestCase):
         testvm.RebootGuest.assert_not_called()
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_reboot_graceful(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on graceful reboot
@@ -84,7 +84,7 @@ class SnapshotTestCase(unittest.TestCase):
     """
 
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
     def test_create_snapshot(self, mock_wait, mock_vm):
         """
             Verify that proper mocked functions are called on snapshot create
@@ -98,8 +98,8 @@ class SnapshotTestCase(unittest.TestCase):
 
     @mock.patch.object(vim, 'VirtualMachine')
     @mock.patch.object(vim, 'VirtualMachineSnapshot')
-    @mock.patch('vsphere_tools.wait_for_task')
-    @mock.patch('vsphere_tools.get_snapshot')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.get_snapshot')
     def test_delete_snapshot(self, mock_getsnap, mock_wait,
                              mock_snap, mock_vm):
         """
@@ -114,8 +114,8 @@ class SnapshotTestCase(unittest.TestCase):
 
     @mock.patch.object(vim, 'VirtualMachine')
     @mock.patch.object(vim, 'VirtualMachineSnapshot')
-    @mock.patch('vsphere_tools.wait_for_task')
-    @mock.patch('vsphere_tools.get_snapshot')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.get_snapshot')
     def test_revert_snapshot(self, mock_getsnap, mock_wait,
                              mock_snap, mock_vm):
         """
@@ -137,9 +137,9 @@ class OtherTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'VirtualMachine')
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'VirtualMachineRelocateSpec')
-    @mock.patch('vsphere_tools.wait_for_task')
-    @mock.patch('vsphere_tools.ping')
-    @mock.patch('vsphere_tools.time.sleep')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.ping')
+    @mock.patch('scripts.vsphere_tools.time.sleep')
     def test_do_a_vmotion(self, mock_sleep, mock_ping, mock_wait,
                           mock_spec, mock_host, mock_vm):
         """
@@ -153,9 +153,9 @@ class OtherTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'VirtualMachine')
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'VirtualMachineRelocateSpec')
-    @mock.patch('vsphere_tools.wait_for_task')
-    @mock.patch('vsphere_tools.ping')
-    @mock.patch('vsphere_tools.time.sleep')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.ping')
+    @mock.patch('scripts.vsphere_tools.time.sleep')
     def test_fail_a_prevmotion(self, mock_sleep, mock_ping, mock_wait,
                                mock_spec, mock_host, mock_vm):
         """
@@ -173,9 +173,9 @@ class OtherTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'VirtualMachine')
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'VirtualMachineRelocateSpec')
-    @mock.patch('vsphere_tools.wait_for_task')
-    @mock.patch('vsphere_tools.ping')
-    @mock.patch('vsphere_tools.time.sleep')
+    @mock.patch('scripts.vsphere_tools.wait_for_task')
+    @mock.patch('scripts.vsphere_tools.ping')
+    @mock.patch('scripts.vsphere_tools.time.sleep')
     def test_fail_a_postvmotion(self, mock_sleep, mock_ping, mock_wait,
                                 mock_spec, mock_host, mock_vm):
         """

@@ -10,7 +10,7 @@ import unittest
 from unittest import mock
 import sys
 from pyVmomi import vim  # pylint: disable=no-name-in-module
-from power import *  # pylint: disable=unused-wildcard-import
+from scripts.power import *  # pylint: disable=unused-wildcard-import
 
 
 class PowerScriptTestCase(unittest.TestCase):
@@ -68,10 +68,10 @@ class PowerScriptTestCase(unittest.TestCase):
 
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('power.vsphere_tools.vm_poweron')
-    @mock.patch('power.vsphere_tools.vm_poweroff')
-    @mock.patch('power.vsphere_tools.vm_reboot')
-    @mock.patch('power.vsphere_tools.get_obj')
+    @mock.patch('scripts.power.vsphere_tools.vm_poweron')
+    @mock.patch('scripts.power.vsphere_tools.vm_poweroff')
+    @mock.patch('scripts.power.vsphere_tools.vm_reboot')
+    @mock.patch('scripts.power.vsphere_tools.get_obj')
     def test_main_gentle(self, mock_go, mock_reboot,
                          mock_poweroff, mock_poweron, mock_vm, mock_si):
         """
@@ -105,10 +105,10 @@ class PowerScriptTestCase(unittest.TestCase):
 
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('power.vsphere_tools.vm_poweron')
-    @mock.patch('power.vsphere_tools.vm_poweroff')
-    @mock.patch('power.vsphere_tools.vm_reboot')
-    @mock.patch('power.vsphere_tools.get_obj')
+    @mock.patch('scripts.power.vsphere_tools.vm_poweron')
+    @mock.patch('scripts.power.vsphere_tools.vm_poweroff')
+    @mock.patch('scripts.power.vsphere_tools.vm_reboot')
+    @mock.patch('scripts.power.vsphere_tools.get_obj')
     def test_main_force(self, mock_go, mock_reboot, mock_poweroff,
                         mock_poweron, mock_vm, mock_si):
         """

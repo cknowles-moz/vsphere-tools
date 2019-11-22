@@ -10,8 +10,8 @@ import sys
 import unittest
 from unittest import mock
 from pyVmomi import vim  # pylint: disable=no-name-in-module
-import canarytest
-from canarytest import *  # pylint: disable=unused-wildcard-import
+from scripts import canarytest
+from scripts.canarytest import *  # pylint: disable=unused-wildcard-import
 
 
 class CanaryTestCase(unittest.TestCase):
@@ -74,10 +74,10 @@ class CanaryTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('canarytest.vsphere_tools.get_obj')
-    @mock.patch('canarytest.vsphere_tools.find_host')
-    @mock.patch('canarytest.vsphere_tools.do_a_vmotion')
-    @mock.patch('canarytest.time.sleep')
+    @mock.patch('scripts.canarytest.vsphere_tools.get_obj')
+    @mock.patch('scripts.canarytest.vsphere_tools.find_host')
+    @mock.patch('scripts.canarytest.vsphere_tools.do_a_vmotion')
+    @mock.patch('scripts.canarytest.time.sleep')
     def test_canary_test(self, mock_sleep, mock_vmotion,
                          mock_fh, mock_go, mock_vm, mock_si, mock_hs):
         """
@@ -97,10 +97,10 @@ class CanaryTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('canarytest.vsphere_tools.get_obj')
-    @mock.patch('canarytest.vsphere_tools.find_host')
-    @mock.patch('canarytest.vsphere_tools.do_a_vmotion')
-    @mock.patch('canarytest.time.sleep')
+    @mock.patch('scripts.canarytest.vsphere_tools.get_obj')
+    @mock.patch('scripts.canarytest.vsphere_tools.find_host')
+    @mock.patch('scripts.canarytest.vsphere_tools.do_a_vmotion')
+    @mock.patch('scripts.canarytest.time.sleep')
     def test_canary_test_failure(self, mock_sleep, mock_vmotion, mock_fh,
                                  mock_go, mock_vm, mock_si, mock_hs):
         """
@@ -125,10 +125,10 @@ class CanaryTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('canarytest.vsphere_tools.get_obj')
-    @mock.patch('canarytest.vsphere_tools.find_host')
-    @mock.patch('canarytest.vsphere_tools.do_a_vmotion')
-    @mock.patch('canarytest.time.sleep')
+    @mock.patch('scripts.canarytest.vsphere_tools.get_obj')
+    @mock.patch('scripts.canarytest.vsphere_tools.find_host')
+    @mock.patch('scripts.canarytest.vsphere_tools.do_a_vmotion')
+    @mock.patch('scripts.canarytest.time.sleep')
     def test_canary_test_ip(self, mock_sleep, mock_vmotion, mock_fh,
                             mock_go, mock_vm, mock_si, mock_hs):
         """
@@ -151,10 +151,10 @@ class CanaryTestCase(unittest.TestCase):
     @mock.patch.object(vim, 'HostSystem')
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('canarytest.vsphere_tools.get_obj')
-    @mock.patch('canarytest.vsphere_tools.find_host')
-    @mock.patch('canarytest.vsphere_tools.do_a_vmotion')
-    @mock.patch('canarytest.time.sleep')
+    @mock.patch('scripts.canarytest.vsphere_tools.get_obj')
+    @mock.patch('scripts.canarytest.vsphere_tools.find_host')
+    @mock.patch('scripts.canarytest.vsphere_tools.do_a_vmotion')
+    @mock.patch('scripts.canarytest.time.sleep')
     def test_canary_test_vmname(self, mock_sleep, mock_vmotion, mock_fh,
                                 mock_go, mock_vm, mock_si, mock_hs):
         """
@@ -174,7 +174,7 @@ class CanaryTestCase(unittest.TestCase):
                          "Two vmotions should occur")
         mock_vmotion.assert_called_with(test_vm, host, test_vm.name, False)
 
-    @mock.patch('canarytest.getpass.getpass')
+    @mock.patch('scripts.canarytest.getpass.getpass')
     @mock.patch.object(connect, "Connect")
     @mock.patch.object(canarytest, 'canary_test')
     @mock.patch.object(configparser, 'ConfigParser')

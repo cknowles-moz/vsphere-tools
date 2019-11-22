@@ -11,8 +11,8 @@ import sys
 import unittest
 from unittest import mock
 from pyVmomi import vim  # pylint: disable=no-name-in-module
-import snapshots  # pylint: disable=unused-import
-from snapshots import *  # pylint: disable=unused-wildcard-import
+from scripts import snapshots  # pylint: disable=unused-import
+from scripts.snapshots import *  # pylint: disable=unused-wildcard-import
 
 
 class SnapshotScriptTestCase(unittest.TestCase):
@@ -74,11 +74,11 @@ class SnapshotScriptTestCase(unittest.TestCase):
 
     @mock.patch.object(vim, 'ServiceInstance')
     @mock.patch.object(vim, 'VirtualMachine')
-    @mock.patch('snapshots.vsphere_tools.list_snapshots')
-    @mock.patch('snapshots.vsphere_tools.create_snapshot')
-    @mock.patch('snapshots.vsphere_tools.revert_snapshot')
-    @mock.patch('snapshots.vsphere_tools.delete_snapshot')
-    @mock.patch('snapshots.vsphere_tools.get_obj')
+    @mock.patch('scripts.snapshots.vsphere_tools.list_snapshots')
+    @mock.patch('scripts.snapshots.vsphere_tools.create_snapshot')
+    @mock.patch('scripts.snapshots.vsphere_tools.revert_snapshot')
+    @mock.patch('scripts.snapshots.vsphere_tools.delete_snapshot')
+    @mock.patch('scripts.snapshots.vsphere_tools.get_obj')
     def test_snapshot_main(self, mock_go, mock_deletesnap, mock_revertsnap,
                            mock_createsnap, mock_listsnap, mock_vm, mock_si):
         """

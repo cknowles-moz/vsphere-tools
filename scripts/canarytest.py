@@ -16,7 +16,14 @@ import configparser
 from pyVim import connect
 from pyVim.connect import Disconnect
 from pyVmomi import vim  # pylint: disable=no-name-in-module
-import vsphere_tools
+# If called as a script, we assume vsphere tools is a subdir, and voila.
+# VScode does something odd here, resulting in an import-error
+# If not called as a script, we're assuming it's called from the root 
+# directory, and import accordingly.
+if __name__ == '__main__':
+    import vsphere_tools # pylint: disable=import-error
+else:
+    from scripts import vsphere_tools
 
 
 def get_args():
