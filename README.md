@@ -10,6 +10,8 @@ Python3 and pyvmomi.
 
 Standard ini file with sections \[DC-\<STRING>] which help by setting the username and server name.  Defaults to "vsphere-tools.ini" in the directory with the scripts
 
+The ini file location defaults to your home directory, but you can specify a different location in the command line.
+
     [DC-MYDC]
     SERVER=vc1.example.com
     USERNAME=myuser@vsphere.local
@@ -18,6 +20,8 @@ Standard ini file with sections \[DC-\<STRING>] which help by setting the userna
 In the above example, you'd specify "MYDC" to the --dc parameter, and the server and username would be used.  as many DC sections as you like can be specified, in case there are multiple VC/User settings you need/desire.
 
 ## Scripts
+
+Scripts are located in ./scripts and you can either run them as "./scripts/<scriptname>" or you can cd into scripts.
 
 ### power.py
 
