@@ -31,26 +31,26 @@ def get_args():
     """
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('operation', help='Operation, on, off, reboot, or \
-        query the status', choices=['on', 'off', 'reboot', 'query'],
-                        default='query', action='store')
-    parser.add_argument('vmname', help='The name of the VM to operate on',
-                        action='store', nargs="+")
     parser.add_argument('-f', help='The config file to use', action='store',
                         dest='configfile', default=str(Path.home()) +
                         os.path.sep + 'vsphere-tools.ini')
+    parser.add_argument('--dc', help="DC to use for ini file parsing",
+                        dest="dc", default="NONE")
     parser.add_argument('-s', help='The VC to connect to', action='store',
                         dest='vc', default="NONE")
     parser.add_argument('-o', help='the port to connect to', action='store',
                         default=443, type=int, dest='port')
     parser.add_argument('-u', help='user name', action='store', dest='user')
     parser.add_argument('-p', help='password', action='store', dest='password')
-    parser.add_argument('--dc', help="DC to use for ini file parsing",
-                        dest="dc", default="NONE")
-    parser.add_argument('--force', help="do a hard shutdown/restart",
-                        action="store_true", dest="hardware", default=False)
     parser.add_argument('-q', help='Quiet mode', action='store_false',
                         dest='verbose', default=True)
+    parser.add_argument('operation', help='Operation, on, off, reboot, or \
+        query the status', choices=['on', 'off', 'reboot', 'query'],
+                        default='query', action='store')
+    parser.add_argument('vmname', help='The name of the VM to operate on',
+                        action='store', nargs="+")
+    parser.add_argument('--force', help="do a hard shutdown/restart",
+                        action="store_true", dest="hardware", default=False)
     return parser.parse_args()
 
 

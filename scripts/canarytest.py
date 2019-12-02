@@ -34,24 +34,24 @@ def get_args():
     """
     parser = argparse.ArgumentParser()
 
+    parser.add_argument('-f', help='The config file to use', action='store',
+                        dest='configfile', default=str(Path.home()) +
+                        os.path.sep + 'vsphere-tools.ini')
+    parser.add_argument('--dc', help="DC to use for ini file parsing",
+                        dest="dc", default='NONE')
     parser.add_argument('-s', help='The VC to connect to', action='store',
                         dest='vc')
     parser.add_argument('-o', help='the port to connect to', action='store',
                         default=443, type=int, dest='port')
     parser.add_argument('-u', help='user name', action='store', dest='user')
     parser.add_argument('-p', help='password', action='store', dest='password')
-    parser.add_argument('-v', help='VM to be canary, by vmname',
-                        action='store', dest='vmname', default=None)
     parser.add_argument('-q', help='Quiet mode', action='store_false',
                         dest='verbose', default=True)
+    parser.add_argument('-v', help='VM to be canary, by vmname',
+                        action='store', dest='vmname', default=None)
     parser.add_argument('-w',
                         help='boolean for wait for keypress between moves',
                         action='store_true', dest='waitbetween', default=False)
-    parser.add_argument('-f', help='The config file to use', action='store',
-                        dest='configfile', default=str(Path.home()) +
-                        os.path.sep + 'vsphere-tools.ini')
-    parser.add_argument('--dc', help="DC to use for ini file parsing",
-                        dest="dc", default='NONE')
     parser.add_argument('hosts',
                         help='list of hosts to travel across, by DNS name',
                         action='store', nargs='+')
