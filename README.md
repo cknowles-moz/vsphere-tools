@@ -21,7 +21,7 @@ In the above example, you'd specify "MYDC" to the --dc parameter, and the server
 
 ## Scripts
 
-Scripts are located in ./scripts and you can either run them as "./scripts/<scriptname>" or you can cd into scripts.
+Scripts are located in ```./scripts``` and you can either run them as ```./scripts/<scriptname>``` or you can cd into scripts. 
 
 ### power.py
 
