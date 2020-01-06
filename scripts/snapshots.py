@@ -108,6 +108,9 @@ def main():
         if vm_obj is not None:
             if args.verbose:
                 print("** Found it")
+        else:
+            print("VM %s was not found" % (this_vm))
+            exit()
 
         if args.operation == "create":
             if args.snapname is None:
