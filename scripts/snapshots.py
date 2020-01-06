@@ -144,10 +144,13 @@ def main():
                 print("* VM %s reverted to snapshot %s" %
                       (vm_obj.name, args.snapname))
         if args.operation == "list":
-            snaplist = vsphere_tools.list_snapshots(
-                vm_obj.snapshot.rootSnapshotList)
-            for item in snaplist:
-                print(item)
+            if vm_obj.snapshot is None:
+                print("VM: %s; No Snapshots exist" % (vm_obj.name))
+            else:
+                snaplist = vsphere_tools.list_snapshots(
+                    vm_obj.snapshot.rootSnapshotList)
+                for item in snaplist:
+                    print(item)
 
 
 if __name__ == '__main__':
