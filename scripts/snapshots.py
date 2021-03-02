@@ -12,8 +12,8 @@ import atexit
 import configparser
 import os
 from pathlib import Path
-from pyVim import connect
-from pyVim.connect import Disconnect
+from pyvim import connect
+from pyvim.connect import Disconnect
 from pyVmomi import vim  # pylint: disable=no-name-in-module
 # If called as a script, we assume vsphere tools is a subdir, and voila.
 # VScode does something odd here, resulting in an import-error
